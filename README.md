@@ -7,6 +7,9 @@ A tarefa contém:
    - coleta o tempo de execução, em ms;
 
 2- Uma tabela de tempos para cada método e um gráfico para cada método
+
 3- Duas análises: 
+
     3.1 Uma sobre o comportamento de cada método individualmente
+    
     3.2 outra comparando o desempenho dos métodos entre eles
