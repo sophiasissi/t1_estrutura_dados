@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class MeuVetor {
     private double[] v;
     private int ultimaPos;
@@ -24,7 +26,6 @@ public class MeuVetor {
             ultimaPos = v.length - 1;
         }
     }
-
     public boolean estaCheio () {
         return ultimaPos == v.length-1;
     }
@@ -49,6 +50,14 @@ public class MeuVetor {
             temp[i] = v[i];
         }
         v = temp;
+    }
+
+    //Método para preencher o vetor
+    public void preencheVetor () {
+        Random r = new Random();
+        for (int i=0; i<v.length; i++) {
+            adiciona(r.nextInt(v.length*10)+1);
+        }
     }
 
     //Método Bubble Sort
