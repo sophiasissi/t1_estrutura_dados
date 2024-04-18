@@ -11,24 +11,50 @@ public class TesteVetor {
         MeuVetor v_14m = new MeuVetor(1400000);
         int testes = 20;
 
-        v_200.preencheVetor();
-
-        //Testes com BubbleSort  
-        long tempo_total = 0;    
-
+        //TESTES COM O VETOR DE 200.000 ELEMENTOS
+        //BubbleSort  
+        long tempo_total_bubble = 0;    
         for (int i = 0; i < testes; i++) {
+            v_200.preencheVetor();
             long inicio = new Date().getTime();
             v_200.bubbleSort();
             long fim = new Date().getTime();
-
-            tempo_total += (fim - inicio);
+            tempo_total_bubble += (fim - inicio);
+            v_200.esvaziaVetor();
         }
-
-        long media_tempo_bubble = tempo_total / testes; 
+        long media_tempo_bubble = tempo_total_bubble / testes; 
         System.out.println("Tamanho  = 200.000, demorou " + media_tempo_bubble + " ms em cada teste");
 
-        // System.out.println(v_200.toString());
-    }
+        //InsertionSort
+        long tempo_total_insert = 0;    
+        for (int i = 0; i < testes; i++) {
+            v_200.preencheVetor();
+            long inicio = new Date().getTime();
+            v_200.insertionSort();
+            long fim = new Date().getTime();
+            tempo_total_insert += (fim - inicio);
+            v_200.esvaziaVetor();
+        }
+        long media_tempo_insert = tempo_total_insert/ testes; 
+        System.out.println("Tamanho  = 200.000, demorou " + media_tempo_insert + " ms em cada teste");
 
+
+        //SelectionSort
+        long tempo_total_select = 0;    
+        for (int i = 0; i < testes; i++) {
+            v_200.preencheVetor();
+            long inicio = new Date().getTime();
+            v_200.selectionSort(14, 13);
+            long fim = new Date().getTime();
+            tempo_total_select += (fim - inicio);
+            v_200.esvaziaVetor();
+        }
+        long media_tempo_select = tempo_total_select/ testes; 
+        System.out.println("Tamanho  = 200.000, demorou " + media_tempo_select + " ms em cada teste");
+
+
+
+
+    }
 }
 

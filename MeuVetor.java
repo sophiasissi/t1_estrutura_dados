@@ -36,21 +36,20 @@ public class MeuVetor {
         ultimaPos = -1;
     }
 
-    //Método para adicionar elementos em um vetor 
+    //Método para adicionar elementos em um vetor
     public void adiciona (double elemento) {
-        if (estaCheio())
-            redimensiona(v.length*2);
-        v[++ultimaPos] = elemento;
+        if (!estaCheio())
+            v[++ultimaPos] = elemento;
     }
 
-    //Método para redimensionar o vetor
-    private void redimensiona(int novaCapacidade) {
-        double[] temp = new double[novaCapacidade];
-        for (int i = 0; i <= ultimaPos; i++) {
-            temp[i] = v[i];
-        }
-        v = temp;
-    }
+    // //Método para redimensionar o vetor
+    // private void redimensiona(int novaCapacidade) {
+    //     double[] temp = new double[novaCapacidade];
+    //     for (int i = 0; i <= ultimaPos; i++) {
+    //         temp[i] = v[i];
+    //     }
+    //     v = temp;
+    // }
 
     //Método para preencher o vetor
     public void preencheVetor () {
@@ -58,6 +57,14 @@ public class MeuVetor {
         for (int i=0; i<v.length; i++) {
             adiciona(r.nextInt(v.length*10)+1);
         }
+    }
+
+    //Método para esvaziar um vetor
+    public void esvaziaVetor() {
+        for(int i = 0; i < v.length; i++) {
+            v[i] = 0;
+        }
+        ultimaPos = -1; 
     }
 
     //Método Bubble Sort
@@ -77,7 +84,8 @@ public class MeuVetor {
     }
 
     //Método Insertion Sort
-    public void insertionSort (int n, int v[]) {
+    public void insertionSort () {
+        int n = v.length;
        for (int j = 1; j < n; ++j) {
           int x = v[j];
           int i;
