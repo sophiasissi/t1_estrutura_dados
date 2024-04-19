@@ -9,46 +9,44 @@ public class TesteVetor {
         // MeuVetor v_1m = new MeuVetor(1000000);
         // MeuVetor v_12m = new MeuVetor(1200000);
         // MeuVetor v_14m = new MeuVetor(1400000);
-        int testes = 20;
+        int testes = 20; 
 
         //TESTES COM O VETOR DE 200.000 ELEMENTOS
         //BubbleSort  
-        long[] tempos_bubble = new long[testes];
+        long tempo_bubble_200 = 0;
         for (int i = 0; i < testes; i++) {
             v_200.preencheVetor();
-            tempos_bubble[i] = v_200.bubbleSort();
+            long inicio = new Date().getTime();
+            v_200.bubbleSort();
+            long fim = new Date().getTime();
+            tempo_bubble_200 += (fim - inicio);
             v_200.esvaziaVetor();
         }
-        // long media_tempo_bubble = tempos_bubble / testes; 
-        System.out.println("Tamanho  = 200.000, demorou " + tempos_bubble + " ms em cada teste do bubble");
-        // System.out.println(tempos_bubble.toString());
+        System.out.println("Demorou " + tempo_bubble_200 + " ms nos 20 testes do método bubble");
 
         //InsertionSort
-        long tempo_total_insert = 0;    
+        long tempo_insert_200 = 0;    
         for (int i = 0; i < testes; i++) {
             v_200.preencheVetor();
             long inicio = new Date().getTime();
             v_200.insertionSort();
             long fim = new Date().getTime();
-            tempo_total_insert += (fim - inicio);
+            tempo_insert_200 += (fim - inicio);
             v_200.esvaziaVetor();
         }
-        long media_tempo_insert = tempo_total_insert/ testes; 
-        System.out.println("Tamanho  = 200.000, demorou " + media_tempo_insert + " ms em cada teste do insert");
+        System.out.println("Demorou " + tempo_insert_200 + " ms nos 20 testes do método insert");
 
-
-        //SelectionSort
-        long tempo_total_select = 0;    
+    //     //SelectionSort
+        long tempo_select_200 = 0;    
         for (int i = 0; i < testes; i++) {
             v_200.preencheVetor();
             long inicio = new Date().getTime();
             v_200.selectionSort();
             long fim = new Date().getTime();
-            tempo_total_select += (fim - inicio);
+            tempo_select_200 += (fim - inicio);
             v_200.esvaziaVetor();
         }
-        long media_tempo_select = tempo_total_select/ testes; 
-        System.out.println("Tamanho  = 200.000, demorou " + media_tempo_select + " ms em cada teste do select");
+        System.out.println("Demorou " + tempo_select_200 + " ms nos 20 testes do método select");
 
 
 

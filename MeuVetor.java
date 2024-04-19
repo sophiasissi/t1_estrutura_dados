@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.Date;
 
 public class MeuVetor {
     private double[] v;
@@ -43,15 +42,6 @@ public class MeuVetor {
             v[++ultimaPos] = elemento;
     }
 
-    // //Método para redimensionar o vetor
-    // private void redimensiona(int novaCapacidade) {
-    //     double[] temp = new double[novaCapacidade];
-    //     for (int i = 0; i <= ultimaPos; i++) {
-    //         temp[i] = v[i];
-    //     }
-    //     v = temp;
-    // }
-
     //Método para preencher o vetor
     public void preencheVetor () {
         Random r = new Random();
@@ -69,8 +59,7 @@ public class MeuVetor {
     }
 
     //Método Bubble Sort
-    public long bubbleSort () {
-        long inicio = new Date().getTime();
+    public void bubbleSort () {
         for (int i=1; i<v.length; i++) {
             for (int j=0; j<v.length-i; j++) {
                 if (v[j] > v[j+1]) {
@@ -80,30 +69,28 @@ public class MeuVetor {
                 }
             }
         }
-        long fim = new Date().getTime();
-        return fim - inicio;
     }
 
     //Método Insertion Sort
     public void insertionSort () {
         int n = v.length;
-       for (int j = 1; j < n; ++j) {
-          int x = (int) v[j];
-          int i;
-          for (i = j-1; i >= 0 && v[i] > x; --i) 
-             v[i+1] = v[i];
-          v[i+1] = x;
+        for (int j = 1; j < n; ++j) {
+            int x = (int) v[j];
+            int i;
+            for (i = j-1; i >= 0 && v[i] > x; --i) 
+                v[i+1] = v[i];
+            v[i+1] = x;
        }
     }
 
     //Método Selection Sort
     public void selectionSort () {
         int n = v.length;
-       for (int i = 0; i < n-1; ++i) {
-          int min = i;
-          for (int j = i+1; j < n; ++j)
-             if (v[j] < v[min])  min = j;
-          int x = (int) v[i]; v[i] = v[min]; v[min] = x;
+        for (int i = 0; i < n-1; ++i) {
+            int min = i;
+            for (int j = i+1; j < n; ++j)
+                if (v[j] < v[min])  min = j;
+            int x = (int) v[i]; v[i] = v[min]; v[min] = x;
        }
     }
 
