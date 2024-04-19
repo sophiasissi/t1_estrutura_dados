@@ -15,3 +15,9 @@ A tarefa contém:
     3.1 Uma sobre o comportamento de cada método individualmente
     
     3.2 outra comparando o desempenho dos métodos entre eles
+    
+Grupo: 
+- Alexandre Giuliani Bresan RA: 23.00085-6
+- Guilherme Costa Figueiredo Pereira RA: 23.01582-9 
+- Léo Vieira Gracio Peixoto RA: 23.00861-0
+- Sophia Sissi Curcio Guedes RA: 23.01044-4 
