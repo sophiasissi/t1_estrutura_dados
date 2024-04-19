@@ -49,8 +49,6 @@ public class TesteVetor {
         System.out.println("Demorou " + tempo_select_200 + " ms nos 20 testes do método select no vetor de 200.000");
 
 
-
-
         //TESTES COM O VETOR DE 400.000 ELEMENTOS
         //BubbleSort  
         long tempo_bubble_400 = 0;
@@ -87,9 +85,6 @@ public class TesteVetor {
             v_400.esvaziaVetor();
         }
         System.out.println("Demorou " + tempo_select_400 + " ms nos 20 testes do método select no vetor de 400.000");
-
-
-
 
 
         //TESTES COM O VETOR DE 600.000 ELEMENTOS
@@ -130,11 +125,6 @@ public class TesteVetor {
         System.out.println("Demorou " + tempo_select_600 + " ms nos 20 testes do método select no vetor de 600.000");
 
 
-
-
-
-
-
         //TESTES COM O VETOR DE 800.000 ELEMENTOS
         //BubbleSort  
         long tempo_bubble_800 = 0;
@@ -171,12 +161,6 @@ public class TesteVetor {
             v_800.esvaziaVetor();
         }
         System.out.println("Demorou " + tempo_select_800 + " ms nos 20 testes do método select no vetor de 800.000");
-
-
-
-
-
-
 
 
         //TESTES COM O VETOR DE 1.000.000 ELEMENTOS
@@ -217,14 +201,6 @@ public class TesteVetor {
         System.out.println("Demorou " + tempo_select_1m + " ms nos 20 testes do método select no vetor de 1.000.000");
 
 
-
-
-
-
-
-
-
-
         //TESTES COM O VETOR DE 1.200.000 ELEMENTOS
         //BubbleSort  
         long tempo_bubble_12m = 0;
@@ -261,17 +237,6 @@ public class TesteVetor {
             v_12m.esvaziaVetor();
         }
         System.out.println("Demorou " + tempo_select_12m + " ms nos 20 testes do método select no vetor de 1.200.000");
-
-
-
-
-
-
-
-
-
-
-
 
 
         //TESTES COM O VETOR DE 1.400.000 ELEMENTOS
