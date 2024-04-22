@@ -1,4 +1,4 @@
-####Análise sobre o comportamento do Bubblesort:*
+#Análise sobre o comportamento do *Bubblesort*:
 # O método BubbleSort é o mais simples entre os demais, porém requer um número maior de comparações a serem feitas, não sendo o mais eficiente, considerando que cada elemento da posição j é comparado com o 
 # elemento da próxima posição e dependendo se o número for maior que o número da próxima posição, o elemento é trocado de posição e assim por diante, até o final do vetor e será percorrido o vetor novamente 
 # até todos os elementos ficarem ordenados. Podemos perceber pelo gráfico que como os vetores vão aumentando de tamanho, a execução se torna mais demorada, além de haver uma grande diferença de tempo entre 
