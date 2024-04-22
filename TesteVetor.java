@@ -1,282 +1,62 @@
 import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TesteVetor {
     public static void main(String[] args) {
-        MeuVetor v_200 = new MeuVetor(200000);
-        MeuVetor v_400 = new MeuVetor(400000);
-        MeuVetor v_600 = new MeuVetor(600000);
-        MeuVetor v_800 = new MeuVetor(800000);
-        MeuVetor v_1m = new MeuVetor(1000000);
-        MeuVetor v_12m = new MeuVetor(1200000);
-        MeuVetor v_14m = new MeuVetor(1400000);
+        int[] vetores = {200000, 400000, 600000, 800000, 1000000, 1200000, 1400000};
+        long[] tempo_bubble = new long[vetores.length];
+        long[] tempo_insert = new long[vetores.length];
+        long[] tempo_select = new long[vetores.length];
         int testes = 20; 
 
-        //TESTES COM O VETOR DE 200.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_200 = 0;
-        for (int i = 0; i < testes; i++) {
-            v_200.preencheVetor();
-            long inicio = new Date().getTime();
-            v_200.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_200 += (fim - inicio);
-            v_200.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_200 + " ms nos 20 testes do método bubble no vetor de 200.000");
+        try {
+            FileWriter writer = new FileWriter("dados.csv");
 
-        //InsertionSort
-        long tempo_insert_200 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_200.preencheVetor();
-            long inicio = new Date().getTime();
-            v_200.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_200 += (fim - inicio);
-            v_200.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_200 + " ms nos 20 testes do método insert no vetor de 200.000");
-        
-        //SelectionSort
-        long tempo_select_200 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_200.preencheVetor();
-            long inicio = new Date().getTime();
-            v_200.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_200 += (fim - inicio);
-            v_200.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_200 + " ms nos 20 testes do método select no vetor de 200.000");
+            writer.append("Tamanho do Vetor,Tempo Bubble (ms),Tempo Insertion (ms),Tempo Selection (ms)\n");
 
+            for (int i = 0; i < vetores.length; i++) {
+                MeuVetor v = new MeuVetor(vetores[i]);
 
-        //TESTES COM O VETOR DE 400.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_400 = 0;
-        for (int i = 0; i < testes; i++) {
-            v_400.preencheVetor();
-            long inicio = new Date().getTime();
-            v_400.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_400 += (fim - inicio);
-            v_400.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_400 + " ms nos 20 testes do método bubble no vetor de 400.000");
+                for (int j = 0; j < testes; j++) {
+                    //BubbleSort
+                    v.preencheVetor();
+                    long inicio_b = new Date().getTime();
+                    v.bubbleSort();
+                    long fim_b = new Date().getTime();
+                    tempo_bubble[i] += (fim_b - inicio_b);
+                    v.esvaziaVetor();
 
-        //InsertionSort
-        long tempo_insert_400 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_400.preencheVetor();
-            long inicio = new Date().getTime();
-            v_400.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_400 += (fim - inicio);
-            v_400.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_400 + " ms nos 20 testes do método insert no vetor de 400.000");
+                    //InsertionSort
+                    v.preencheVetor();
+                    long inicio_i = new Date().getTime();
+                    v.insertionSort();
+                    long fim_i = new Date().getTime();
+                    tempo_insert[i] += (fim_i - inicio_i);
+                    v.esvaziaVetor();
+                    
+                    //SelectionSort
+                    v.preencheVetor();
+                    long inicio_s = new Date().getTime();
+                    v.selectionSort();
+                    long fim_s = new Date().getTime();
+                    tempo_select[i] += (fim_s - inicio_s);
+                    v.esvaziaVetor();
+                    
+                }
 
-    //     //SelectionSort
-        long tempo_select_400 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_400.preencheVetor();
-            long inicio = new Date().getTime();
-            v_400.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_400 += (fim - inicio);
-            v_400.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_400 + " ms nos 20 testes do método select no vetor de 400.000");
+                writer.append(String.format("%d,%d,%d,%d\n", vetores[i], tempo_bubble[i], tempo_insert[i], tempo_select[i]));
 
+                //Tabela de tempos para cada método
+                System.out.println("Tamanho do Vetor | Tempo Bubble (ms) | Tempo Insertion (ms) | Tempo Selection (ms)");
+                System.out.printf("%16d | %17d | %20d | %20d\n", vetores[i], tempo_bubble[i], tempo_insert[i], tempo_select[i]);
 
-        //TESTES COM O VETOR DE 600.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_600 = 0;
-        for (int i = 0; i < testes; i++) {
-            v_600.preencheVetor();
-            long inicio = new Date().getTime();
-            v_600.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_600 += (fim - inicio);
-            v_600.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_600 + " ms nos 20 testes do método bubble no vetor de 600.000");
-
-        //InsertionSort
-        long tempo_insert_600 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_600.preencheVetor();
-            long inicio = new Date().getTime();
-            v_600.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_600 += (fim - inicio);
-            v_600.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_600 + " ms nos 20 testes do método insert no vetor de 600.000");
-
-        //SelectionSort
-        long tempo_select_600 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_600.preencheVetor();
-            long inicio = new Date().getTime();
-            v_600.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_600 += (fim - inicio);
-            v_600.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_600 + " ms nos 20 testes do método select no vetor de 600.000");
-
-
-        //TESTES COM O VETOR DE 800.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_800 = 0;
-        for (int i = 0; i < testes; i++) {
-            v_800.preencheVetor();
-            long inicio = new Date().getTime();
-            v_800.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_800 += (fim - inicio);
-            v_800.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_800 + " ms nos 20 testes do método bubble no vetor de 800.000");
-
-        //InsertionSort
-        long tempo_insert_800 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_800.preencheVetor();
-            long inicio = new Date().getTime();
-            v_800.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_800 += (fim - inicio);
-            v_800.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_800 + " ms nos 20 testes do método insert no vetor de 800.000");
-
-        //SelectionSort
-        long tempo_select_800 = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_800.preencheVetor();
-            long inicio = new Date().getTime();
-            v_800.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_800 += (fim - inicio);
-            v_800.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_800 + " ms nos 20 testes do método select no vetor de 800.000");
-
-
-        //TESTES COM O VETOR DE 1.000.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_1m = 0;
-        for (int i = 0; i < testes; i++) {
-            v_1m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_1m.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_1m += (fim - inicio);
-            v_1m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_1m + " ms nos 20 testes do método bubble no vetor de 1.000.000");
-
-        //InsertionSort
-        long tempo_insert_1m = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_1m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_1m.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_1m += (fim - inicio);
-            v_1m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_1m + " ms nos 20 testes do método insert no vetor de 1.000.000");
-
-        //SelectionSort
-        long tempo_select_1m = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_1m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_1m.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_1m += (fim - inicio);
-            v_1m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_1m + " ms nos 20 testes do método select no vetor de 1.000.000");
-
-
-        //TESTES COM O VETOR DE 1.200.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_12m = 0;
-        for (int i = 0; i < testes; i++) {
-            v_12m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_12m.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_12m += (fim - inicio);
-            v_12m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_12m + " ms nos 20 testes do método bubble no vetor de 1.200.000");
-
-        //InsertionSort
-        long tempo_insert_12m = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_12m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_12m.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_12m += (fim - inicio);
-            v_12m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_12m + " ms nos 20 testes do método insert no vetor de 1.200.000");
-
-        //SelectionSort
-        long tempo_select_12m = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_12m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_12m.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_12m += (fim - inicio);
-            v_12m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_12m + " ms nos 20 testes do método select no vetor de 1.200.000");
-
-
-        //TESTES COM O VETOR DE 1.400.000 ELEMENTOS
-        //BubbleSort  
-        long tempo_bubble_14m = 0;
-        for (int i = 0; i < testes; i++) {
-            v_14m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_14m.bubbleSort();
-            long fim = new Date().getTime();
-            tempo_bubble_14m += (fim - inicio);
-            v_14m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_bubble_14m + " ms nos 20 testes do método bubble no vetor de 1.400.000");
-
-        //InsertionSort
-        long tempo_insert_14m = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_14m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_14m.insertionSort();
-            long fim = new Date().getTime();
-            tempo_insert_14m += (fim - inicio);
-            v_14m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_insert_14m + " ms nos 20 testes do método insert no vetor de 1.400.000");
-
-        //SelectionSort
-        long tempo_select_14m = 0;    
-        for (int i = 0; i < testes; i++) {
-            v_14m.preencheVetor();
-            long inicio = new Date().getTime();
-            v_14m.selectionSort();
-            long fim = new Date().getTime();
-            tempo_select_14m += (fim - inicio);
-            v_14m.esvaziaVetor();
-        }
-        System.out.println("Demorou " + tempo_select_14m + " ms nos 20 testes do método select no vetor de 1.400.000");
-
-
+            }
+            writer.flush();
+            writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 }
 
