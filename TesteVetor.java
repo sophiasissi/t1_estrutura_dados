@@ -13,7 +13,7 @@ public class TesteVetor {
         try {
             FileWriter writer = new FileWriter("dados.csv");
 
-            writer.append("Tamanho do Vetor,Tempo Bubble (ms),Tempo Insertion (ms),Tempo Selection (ms)\n");
+            writer.append("Tamanho do Vetor,Tempo BubbleSort (ms),Tempo InsertionSort (ms),Tempo SelectionSort (ms)\n");
 
             for (int i = 0; i < vetores.length; i++) {
                 MeuVetor v = new MeuVetor(vetores[i]);
@@ -48,8 +48,8 @@ public class TesteVetor {
                 writer.append(String.format("%d,%d,%d,%d\n", vetores[i], tempo_bubble[i], tempo_insert[i], tempo_select[i]));
 
                 //Tabela de tempos para cada método
-                System.out.println("Tamanho do Vetor | Tempo Bubble (ms) | Tempo Insertion (ms) | Tempo Selection (ms)");
-                System.out.printf("%16d | %17d | %20d | %20d\n", vetores[i], tempo_bubble[i], tempo_insert[i], tempo_select[i]);
+                System.out.println("Tamanho do Vetor | Tempo BubbleSort (ms) | Tempo InsertionSort (ms) | Tempo SelectionSort (ms)");
+                System.out.printf("%16d | %21d | %24d | %24d\n", vetores[i], tempo_bubble[i], tempo_insert[i], tempo_select[i]);
 
             }
             writer.flush();
