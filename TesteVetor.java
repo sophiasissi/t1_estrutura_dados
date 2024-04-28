@@ -10,6 +10,7 @@ public class TesteVetor {
         long[] tempo_select = new long[vetores.length];
         int testes = 20; 
 
+        //Armazenar os dados no arquivo dados.csv
         try {
             FileWriter writer = new FileWriter("dados.csv");
 
