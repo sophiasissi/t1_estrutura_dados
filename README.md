@@ -1,6 +1,6 @@
 #  Trabalho de Algoritmos, Estrutura de Dados e Programação
 
-Análise do desempenho de algoritmos elementares de ordenação.
+## Análise do desempenho de algoritmos elementares de ordenação.
 
 A tarefa contém: 
 
